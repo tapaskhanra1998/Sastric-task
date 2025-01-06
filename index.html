@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Site Poster Popup</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Overlay background that covers everything */
+    .poster-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark overlay */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Ensure it’s on top */
+    }
+
+    /* Centered poster container */
+    .poster-content {
+      position: relative;
+      background: #fff;
+      max-width: 600px;  /* Adjust if needed */
+      width: 80%;
+      padding: 1em;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    /* Poster image */
+    .poster-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    /* Close button (X) in the corner */
+    .close-btn {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      background: #ff4d4f;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background: #cc0000;
+    }
+
+    /* Demo content so you can see the underlying page */
+    .page-content {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Poster Popup Overlay -->
+  <div class="poster-overlay" id="posterOverlay">
+    <div class="poster-content">
+      <button class="close-btn" id="closeBtn">&times;</button>
+
+      <!-- Replace with your local "happynewyear.jpg" file -->
+      <img 
+        src="happynewyear.jpg" 
+        alt="Happy New Year Poster"
+      />
+
+      <h1>Happy New Year!</h1>
+      <p>May this year bring joy and prosperity to everyone!</p>
+    </div>
+  </div>
+
+  <!-- Main Page Content -->
+  <div class="page-content">
+    <h2>The rest of your website goes here...</h2>
+  </div>
+
+  <script>
+    // Close the poster popup when the close button is clicked
+    document.getElementById('closeBtn').addEventListener('click', function() {
+      document.getElementById('posterOverlay').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
