@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Site Poster Popup</title>
+  <title>Popup Poster</title>
   <style>
-    /* Basic Reset */
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -15,41 +15,58 @@
       font-family: Arial, sans-serif;
     }
 
-    /* Overlay background that covers everything */
+    /*
+      1. A hidden checkbox controls the visibility of the overlay.
+      2. By default, it's unchecked -> Overlay is visible.
+      3. When the user clicks close, it becomes checked -> Overlay is hidden.
+    */
+    #closeOverlay {
+      display: none; /* Hide the checkbox itself */
+    }
+
+    /* The overlay that covers the screen */
     .poster-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7); /* semi-transparent dark overlay */
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark overlay */
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 9999; /* Ensure it’s on top */
+      z-index: 9999;
     }
 
-    /* Centered poster container */
+    /*
+      When the checkbox is checked (closeOverlay:checked),
+      hide the overlay.
+    */
+    #closeOverlay:checked ~ .poster-overlay {
+      display: none;
+    }
+
+    /* The white poster container */
     .poster-content {
       position: relative;
       background: #fff;
-      max-width: 600px;  /* Adjust if needed */
       width: 80%;
+      max-width: 600px; /* Adjust if needed */
       padding: 1em;
       border-radius: 8px;
       text-align: center;
     }
 
-    /* Poster image - smaller width */
+    /* Poster image with smaller size */
     .poster-content img {
-      max-width: 60%;  /* Adjust this to make the image larger or smaller */
+      max-width: 60%; /* Adjust this to make image bigger/smaller */
       height: auto;
+      display: block;
+      margin: 0 auto 1em auto;
       border-radius: 5px;
-      margin: 0 auto;
-      display: block;  /* Center the image */
     }
 
-    /* Close button (X) in the corner */
+    /* Close button (X) at top-right corner of poster */
     .close-btn {
       position: absolute;
       top: 0.5em;
@@ -61,49 +78,35 @@
       width: 30px;
       height: 30px;
       font-size: 1.2em;
+      text-align: center;
+      line-height: 30px;
       cursor: pointer;
+      text-decoration: none;
     }
     .close-btn:hover {
       background: #cc0000;
     }
-
-    /* Demo content so you can see the underlying page */
-    .page-content {
-      display: flex;
-      height: 100%;
-      align-items: center;
-      justify-content: center;
-      background-color: #f0f0f0;
-    }
   </style>
 </head>
 <body>
-  <!-- Poster Popup Overlay -->
-  <div class="poster-overlay" id="posterOverlay">
-    <div class="poster-content">
-      <button class="close-btn" id="closeBtn">&times;</button>
 
-      <!-- Reference the local "happynewyear.jpg" file -->
-      <img 
-        src="happynewyear.jpg" 
-        alt="Happy New Year Poster"
-      />
+  <!-- 1) Hidden checkbox (unchecked by default => poster is visible). -->
+  <input type="checkbox" id="closeOverlay">
+
+  <!-- 2) The Popup Overlay (poster) -->
+  <div class="poster-overlay">
+    <div class="poster-content">
+      <!-- 3) "Close" is a label tied to the checkbox, so clicking it checks the checkbox -->
+      <label for="closeOverlay" class="close-btn">&times;</label>
+
+      <!-- Your local "happynewyear.jpg" -->
+      <img src="happynewyear.jpg" alt="Happy New Year Poster">
 
       <h1>Happy New Year!</h1>
       <p>May this year bring joy and prosperity to everyone!</p>
     </div>
   </div>
 
-  <!-- Main Page Content -->
-  <div class="page-content">
-    <h2>The rest of your website goes here...</h2>
-  </div>
-
-  <script>
-    // Close the poster popup when the close button is clicked
-    document.getElementById('closeBtn').addEventListener('click', function() {
-      document.getElementById('posterOverlay').style.display = 'none';
-    });
-  </script>
 </body>
 </html>
+
