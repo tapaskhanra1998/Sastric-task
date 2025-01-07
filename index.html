@@ -59,14 +59,14 @@
 
     /* Poster image with smaller size */
     .poster-content img {
-      max-width: 60%; /* Adjust this to make image bigger/smaller */
+      max-width: 60%;
       height: auto;
       display: block;
       margin: 0 auto 1em auto;
       border-radius: 5px;
     }
 
-    /* Close button (X) at top-right corner of poster */
+    /* Close button */
     .close-btn {
       position: absolute;
       top: 0.5em;
@@ -74,14 +74,11 @@
       background: #ff4d4f;
       color: #fff;
       border: none;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      font-size: 1.2em;
-      text-align: center;
-      line-height: 30px;
+      border-radius: 5px;
+      padding: 6px 12px;
       cursor: pointer;
       text-decoration: none;
+      font-size: 0.9em;
     }
     .close-btn:hover {
       background: #cc0000;
@@ -96,10 +93,10 @@
   <!-- 2) The Popup Overlay (poster) -->
   <div class="poster-overlay">
     <div class="poster-content">
-      <!-- 3) "Close" is a label tied to the checkbox, so clicking it checks the checkbox -->
-      <label for="closeOverlay" class="close-btn">&times;</label>
+      <!-- 3) "Close" label replaces the 'X' sign -->
+      <label for="closeOverlay" class="close-btn">Close</label>
 
-      <!-- Added link wrapping the poster -->
+      <!-- Clickable poster linked to a form -->
       <a href="https://forms.gle/fgiiQTLND1RTMkTe6" target="_blank">
         <img src="QRCJan2024.png" alt="Poster">
       </a>
