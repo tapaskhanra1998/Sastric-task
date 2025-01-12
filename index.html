@@ -15,11 +15,6 @@
       font-family: Arial, sans-serif;
     }
 
-    /*
-      1. A hidden checkbox controls the visibility of the overlay.
-      2. By default, it's unchecked -> Overlay is visible.
-      3. When the user clicks close, it becomes checked -> Overlay is hidden.
-    */
     #closeOverlay {
       display: none; /* Hide the checkbox itself */
     }
@@ -38,15 +33,10 @@
       z-index: 9999;
     }
 
-    /*
-      When the checkbox is checked (closeOverlay:checked),
-      hide the overlay.
-    */
     #closeOverlay:checked ~ .poster-overlay {
       display: none;
     }
 
-    /* The white poster container */
     .poster-content {
       position: relative;
       background: #fff;
@@ -57,7 +47,6 @@
       text-align: center;
     }
 
-    /* Poster image with smaller size */
     .poster-content img {
       max-width: 60%;
       height: auto;
@@ -82,6 +71,11 @@
     }
     .close-btn:hover {
       background: #cc0000;
+    }
+
+    /* Decrease font size for the h1 tag */
+    .poster-content h1 {
+      font-size: 1.5em; /* Adjust as needed (smaller than the default size) */
     }
   </style>
 </head>
